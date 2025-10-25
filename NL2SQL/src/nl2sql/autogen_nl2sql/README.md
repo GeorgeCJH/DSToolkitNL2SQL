@@ -1,16 +1,19 @@
 # Multi-Shot Text2SQL Component - AutoGen
 
-The implementation is written for [AutoGen](https://github.com/microsoft/autogen) in Python, the Autogen framework not only provide the capability of agentic flow management but also has built in connector with most of the database and data platorm.
+The implementation is written with [AutoGen](https://github.com/microsoft/autogen) in Python, the Autogen framework not only provide the capability of agentic flow management but also has built in connector with most of the database and data platorm.
 
 ## Full Logical Flow for Agentic Vector Based Approach
 
-The following diagram shows the logical flow within the multi-agent system. The flow begins with query rewriting to preprocess questions - this includes resolving relative dates (e.g., "last month" to "November 2024") and breaking down complex queries into simpler components. For each preprocessed question, if query cache is enabled, the system checks the cache for previously asked similar questions. In an ideal scenario, the preprocessed questions will be found in the cache, leading to the quickest answer generation. In cases where the question is not known, the system will fall back to the other agents accordingly and generate the SQL query using the LLMs. The cache is then updated with the newly generated query and schemas.
+The following diagram shows the logical flow within the multi-agent system. 
+
+
+The flow begins with query rewriting to preprocess questions - this includes resolving relative dates (e.g., "last month" to "November 2024") and breaking down complex queries into simpler components. For each preprocessed question, if query cache is enabled, the system checks the cache for previously asked similar questions. In an ideal scenario, the preprocessed questions will be found in the cache, leading to the quickest answer generation. In cases where the question is not known, the system will fall back to the other agents accordingly and generate the SQL query using the LLMs. The cache is then updated with the newly generated query and schemas.
 
 In this release, **gpt4o-mini** is used as each agent's prompt is small and focuses on a single simple task.
 
 As the query cache is shared between users (no data is stored in the cache), a new user can benefit from the pre-mapped question and schema resolution in the index. There are multiple possible strategies for updating the query cache, see the possible options in the Text2SQL README.
 
-**Database results were deliberately not stored within the cache. Storing them would have removed one of the key benefits of the Text2SQL plugin, the ability to get near-real time information inside a RAG application. Instead, the query is stored so that the most-recent results can be obtained quickly. Additionally, this retains the ability to apply Row or Column Level Security.**
+**Database results were deliberately not stored within the cache. Storing them would have removed one of the key benefits of the NL2SQL plugin, the ability to get near-real time information inside a RAG application. Instead, the query is stored so that the most-recent results can be obtained quickly. Additionally, this retains the ability to apply Row or Column Level Security.**
 
 ![Vector Based with Query Cache Logical Flow.](../images/Agentic%20Text2SQL%20Query%20Cache.png "Agentic Vector Based with Query Cache Logical Flow")
 
@@ -63,7 +66,7 @@ The flow uses termination conditions:
 
 ## Provided Notebooks & Scripts
 
-- `./Iteration 5 - Agentic Vector Based Text2SQL.ipynb` provides example of how to utilize the Agentic Vector Based Text2SQL approach to query the database. The query cache plugin will be enabled or disabled depending on the environmental parameters.
+- `./Agentic Vector Based NL2SQL.ipynb` provides example of how to utilize the Agentic Vector Based NL2SQL approach to query the database. The query cache plugin will be enabled or disabled depending on the environmental parameters.
 
 ## Agents
 
@@ -129,10 +132,10 @@ To enable the [AutoGen State](https://microsoft.github.io/autogen/stable/referen
 
 The system behavior can be controlled through environment variables:
 
-- `Text2Sql__UseQueryCache`: Enables/disables the query cache functionality
-- `Text2Sql__PreRunQueryCache`: Controls whether to pre-run cached queries
-- `Text2Sql__UseColumnValueStore`: Enables/disables the column value store
-- `Text2Sql__DatabaseEngine`: Specifies the target database engine
+- `NL2Sql__UseQueryCache`: Enables/disables the query cache functionality
+- `NL2Sql__PreRunQueryCache`: Controls whether to pre-run cached queries
+- `NL2Sql__UseColumnValueStore`: Enables/disables the column value store
+- `NL2Sql__DatabaseEngine`: Specifies the target database engine
 
 Each agent can be configured with specific parameters and prompts to optimize its behavior for different scenarios.
 
