@@ -1,0 +1,63 @@
+[project]
+name = "nl2sql"
+version = "0.20.1"
+description = "Agentic NL2SQL pipeline with AutoGen and Azure OpenAI / Azure Search connectors."
+authors = [{ name = "Microsoft, ISD EAG Datascientist" }]
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+
+dependencies = [
+  # Core functionality
+  "aiohttp>=3.11.11",
+  "aioodbc>=0.5.0",
+  "azure-identity>=1.19.0",
+  "azure-search>=1.0.0b2",
+  "azure-search-documents==11.6.0",
+  "jinja2>=3.1.4",
+  "networkx>=3.4.2",
+  "numpy<2.0.0",
+  "openai>=1.55.3",
+  "pandas>=2.2.3",
+  "pydantic>=2.10.2",
+  "python-dotenv>=1.0.1",
+  "pyyaml>=6.0.2",
+  "rich>=13.9.4",
+  "sqlglot[rs]>=25.32.1",
+  "tabulate>=0.9.0",
+  "tenacity>=9.0.0",
+  "typer>=0.14.0",
+
+  # AutoGen stack
+  "autogen-agentchat==0.4.7",
+  "autogen-core==0.4.7",
+  "autogen-ext[azure,openai]==0.4.7",
+  "aiostream>=0.6.4",
+  "grpcio>=1.68.1",
+  "sqlparse>=0.4.4",
+  "nltk>=3.8.1",
+  "cachetools>=5.5.1",
+  "azure-cosmos>=4.9.0",
+]
+
+[project.optional-dependencies]
+postgres = ["psycopg[binary]>=3.2.3"]
+snowflake = ["snowflake-connector-python>=3.12.3"]
+databricks = ["databricks-sql-connector>=3.0.1", "pyarrow>=14.0.2,<17"]
+sqlite = ["aiosqlite>=0.19.0"]
+dev = ["pytest", "ruff", "mypy", "build", "twine"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"nl2sql" = ["**/*.yaml", "**/*.yml"]
+"nl2sql.nl2sql_core.prompts" = ["*.yaml", "*.yml"]
+
+
+[tool.ruff]
+line-length = 100
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"

@@ -1,0 +1,67 @@
+[project]
+name = "dstoolskit-nl2sql"
+version = "1.0.0"
+description = "Microsoft DSToolskit NL2SQL - Enterprise Natural Language to SQL conversion toolkit"
+authors = [
+    { name = "Microsoft ISD EAG Data Science Team" }
+]
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+keywords = ["nl2sql", "azure", "openai", "autogen", "sql", "natural-language"]
+
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Database",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+dependencies = [
+    "nl2sql-core",
+    "deploy-ai-search-indexes",
+]
+
+[project.urls]
+Homepage = "https://github.com/YOUR_USERNAME/DSToolkitNL2SQL"
+Documentation = "https://github.com/YOUR_USERNAME/DSToolkitNL2SQL/docs"
+Repository = "https://github.com/YOUR_USERNAME/DSToolkitNL2SQL.git"
+Issues = "https://github.com/YOUR_USERNAME/DSToolkitNL2SQL/issues"
+
+[project.optional-dependencies]
+all = [
+    "nl2sql-core[postgres,snowflake,databricks,sqlite]",
+]
+dev = [
+    "pytest>=7.0.0",
+    "black>=23.0.0",
+    "ruff>=0.1.0",
+    "mypy>=1.0.0",
+    "pre-commit>=3.0.0",
+]
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["dstoolkit_nl2sql*"]
+
+[tool.black]
+line-length = 100
+target-version = ['py311']
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true

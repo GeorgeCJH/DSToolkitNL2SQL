@@ -1,0 +1,45 @@
+[project]
+name = "deploy_ai_search_indexes"
+version = "0.2.0"
+description = "Helper functions to deploy Azure AI Search"
+readme = "README.md"
+authors = [
+    { name = "Microsoft, ISD EAG" }
+]
+requires-python = ">=3.11"
+license = { text = "MIT" }
+
+dependencies = [
+    "azure-identity>=1.19.0",
+    "azure-mgmt-web>=7.3.1",
+    "azure-search-documents==11.6.0",
+    "azure-storage-blob>=12.24.0",
+    "python-dotenv>=1.0.1",
+    # Reference to local nl2sql library
+    "nl2sql @ file:///C:/MyDocs/AppProjects/NL2SQL/dist/nl2sql-0.20.1-py3-none-any.whl",
+]
+
+[dependency-groups]
+dev = [
+    "black>=24.10.0",
+    "ipykernel>=6.29.5",
+    "jupyter>=1.1.1",
+    "pre-commit>=4.0.1",
+    "pygments>=2.18.0",
+    "ruff>=0.8.1",
+    "python-dotenv>=1.0.1",
+]
+
+[project.optional-dependencies]
+snowflake = [
+    "nl2sql[postgres]",
+]
+databricks = [
+    "nl2sql[databricks]",
+]
+postgres = [
+    "nl2sql[postgres]",
+]
+sqlite = [
+    "nl2sql[sqlite]",
+]

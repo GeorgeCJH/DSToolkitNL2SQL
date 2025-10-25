@@ -1,0 +1,19 @@
+﻿{
+  "thread_id": "test1",
+  "message": "which product has the highest price?",
+  "answer": "The product with the highest price is **갈레시 Z 포드7 자금제** with a standard price of **2,933,700**.",
+  "sql_results": {
+    "queries": [
+      "SELECT product_name, standard_price FROM public.kt_product_all WHERE standard_price = (SELECT MAX(standard_price) FROM public.kt_product_all) LIMIT 100"
+    ],
+    "rows": [
+      {
+        "product_name": "갤럭시 Z 폴드7 자급제",
+        "standard_price": 2933700
+      }
+    ],
+    "total_rows": 1,
+    "queries_executed": 1
+  },
+  "success": true
+}
