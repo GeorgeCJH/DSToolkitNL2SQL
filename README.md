@@ -1,9 +1,7 @@
-# NL-to-SQL
+# Nature Language to SQL (NL2SQL)
 This repo provides code of NL-to-SQL (or NL2SQL) solutions.
 
 It is intended that with the AI Search plugins and skills provided in this repository, are adapted and added to RAG application to improve the response quality.
-
-**Got questions? Use the awesome DeepWiki linked above to see an overview of the code and approaches**.
 
 > [!IMPORTANT]
 >
