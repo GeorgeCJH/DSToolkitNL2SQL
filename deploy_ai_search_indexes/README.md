@@ -1,16 +1,13 @@
 # AI Search Indexing Build Package Overview
-Azure AI Search serves as a critical infrastructure component that enables:
+Azure AI Search powers several critical features in the NL2SQL system that enables:
 
 - Schema selection for NL2SQL through semantic
 - matching of user queries to database schemas
 - Query caching to improve performance and reduce costs
 - Column value storage for entity recognition and disambiguation
 
-
-# Azure AI Search powers several critical features in the NL2SQL system:
-
 ## Schema Selection
-The Schema Selection Agent uses AI Search to find the most relevant database tables and views based on the user's natural language query. This process involves:
+The Schema Selection Agent uses AI Search to find the most relevant database tables and views based on the user's natural language query. 
 
 ## Extracting query intent from natural language
 Sending a semantic search request to the Schema Store Index
@@ -33,9 +30,6 @@ The Query Cache uses AI Search to:
 Retrieve and reuse SQL queries for similar questions
 - This caching mechanism improves performance and reduces costs by avoiding redundant SQL generation.
 
-# Azure AI Search Queries
-The system uses several types of queries to Azure AI Search:
-
 ## Vector Search Queries
 Vector search uses embeddings to find semantically similar content. This is implemented in the run_ai_search_query method of the AISearchConnector class:
 
@@ -48,11 +42,11 @@ Vector search is particularly effective for semantic matching of questions to sc
 ## Keyword Search
 The system also supports traditional keyword search for exact matching, especially useful for column value lookups where fuzzy matching is needed
 
-# AI Search Indexing Setup Detail Descrition
+# AI Search Indexing Setup Detail Description
 
 The associated scripts in this portion of the repository contains pre-built scripts to deploy the skillsets needed for nl2sql.
 
-The steps here are same with "GETTING_STARTED" document, but here's with have more detailed instructions for your reference. 
+The steps here are same with "GETTING_STARTED" document, but here's do more detailed instructions for your reference. 
 
 ## Steps for NL2SQL Index Deployment 
 
@@ -87,10 +81,11 @@ The steps here are same with "GETTING_STARTED" document, but here's with have mo
 **Execute the following commands in the `deploy_ai_search_indexes/src/deploy_ai_search_indexes` directory:**
 
 3. Adjust `text_2_sql_column_value_store.py` with any changes to the index / indexer.
-    - Korean Language support is added for column value search index.
+**Please note that Korean Language support is added for column value search index, but due to AI Search SDK limitation, it is only works when the index is alread built :**
     - Because analyzers are used to tokenize terms, you should assign an analyzer when the field is created. In fact, assigning an analyzer or indexAnalyzer to a field that has already been physically created isn't allowed (although you can change the searchAnalyzer property at any time with no impact to the index).
+    - So when it is first time run, please comment out the "analyer_name" in this python scripts.
 
-4. Run `uv run deploy.py` with the following args:
+5. Run `uv run deploy.py` with the following args:
 
     - `index_type nl2sql_column_value_store`. This selects the `Text2SQLColumnValueStoreAISearch` sub class.
     - `rebuild`. Whether to delete and rebuild the index.
