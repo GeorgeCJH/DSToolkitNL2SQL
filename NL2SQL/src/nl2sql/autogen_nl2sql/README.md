@@ -15,7 +15,7 @@ As the query cache is shared between users (no data is stored in the cache), a n
 
 **Database results were deliberately not stored within the cache. Storing them would have removed one of the key benefits of the NL2SQL plugin, the ability to get near-real time information inside a RAG application. Instead, the query is stored so that the most-recent results can be obtained quickly. Additionally, this retains the ability to apply Row or Column Level Security.**
 
-![Vector Based with Query Cache Logical Flow.](../images/Agentic%20Text2SQL%20Query%20Cache.png "Agentic Vector Based with Query Cache Logical Flow")
+![Vector Based with Query Cache Logical Flow.](../../../../docs/images/Agentic%20Text2SQL%20Query%20Cache.png "Agentic Vector Based with Query Cache Logical Flow")
 
 ## Agent Flow in Detail
 
