@@ -25,13 +25,7 @@ A common way to perform NL2SQL generation _(Iteration 1)_ is to provide the comp
 - More schema information can cause confusion with the LLM. In our original use case, when exceeding 5 complex tables / views, we found that the LLM could get confused between which columns belonged to which entity and as such, would generate invalid SQL queries.
 - Entity relationships between different tables is challenging for the LLM to understand.
 
-To solve these issues, a Multi-Shot approach is developed. Below is the iterations of development on the NL2SQL query component.
-
-![Comparison between a common NL2SQL approach and a Multi-Shot NL2SQL approach.](../../images/Text2SQL%20Approaches.png "Multi Shot SQL Approaches")
-
-> [!NOTE]
->
-Our approach has evolved as the system has matured into an multi-agent approach that brings improved reasoning, speed and instruction following capabilities. With separation into agents, different agents can focus on one task only, and provide a better overall flow and response quality.
+To solve these issues, a Multi-Shot approach is developed. This approach has evolved as the system has matured into an multi-agent approach that brings improved reasoning, speed and instruction following capabilities. With separation into agents, different agents can focus on one task only, and provide a better overall flow and response quality.
 
 Using Auto-Function calling capabilities, the LLM is able to retrieve from the plugin the full schema information for the views / tables that it considers useful for answering the question. Once retrieved, the full SQL query can then be generated. The schemas for multiple views / tables can be retrieved to allow the LLM to perform joins and other complex queries.
 
@@ -49,7 +43,6 @@ As the query cache is shared between users (no data is stored in the cache), a n
 
 **Database results were deliberately not stored within the cache. Storing them would have removed one of the key benefits of the NL2SQL plugin, the ability to get near-real time information inside a RAG application. Instead, the query is stored so that the most-recent results can be obtained quickly. Additionally, this retains the ability to apply Row or Column Level Security.**
 
-![Vector Based with Query Cache Logical Flow.](./images/Agentic%20Text2SQL%20Query%20Cache.png "Agentic Vector Based with Query Cache Logical Flow")
 
 ## Agents
 
