@@ -6,6 +6,9 @@ The guide will use PostgreSQL as data source reference to deploy the NL2SQL solu
 The guide covers the steps prerequisite Azure resources, environment configurations, code installation, and deployment steps for the systems.
 ![Follow the four sections of the deployment process.](../docs/images/NL2SQL_Overall_Deploy_Steps.png "Deployment process")
 
+> [!NOTE]
+> **Please note that the deploy_ai_search_index and NL2SQL are setup and deployed as standard alone package, you need to config the seperate python .env which reference the provided .env_template**
+
 ## Section I:
 ## Prerequisites of Azure Resources readiness
 Before beginning the setup process, ensure you have the following:
@@ -105,7 +108,7 @@ If the above command run success, there will have following three folder with js
 
 ### Step 1. setup NL2SQL core
 ### Navigate to text_2_sql_core
->cd nl2sql_core
+>cd NL2SQL
 
 ### Create environment file
 Environment Configuration Options
@@ -117,19 +120,12 @@ The .env file contains various configuration options that allow you to customize
 ### Install dependencies and database option for PostgreSQL
 >uv sync --extra postgres
 
-### Step 2. AutoGen Implementation Setup
-The AutoGen implementation uses the Text2SQL core to provide an agentic approach:
-
-### Navigate to autogen directory
->cd autogen
-
-### Install dependencies with additional database connectors
->uv sync --extra postgres
-
 Once set up, you can test the implementation by running the provided notebook:
 
 ### Open and run the notebook
 jupyter notebook "Agentic Vector Based NL2SQL.ipynb"
+> [!NOTE]
+> Please ensure this Jupeter Notebook use the python enviroment with NL2SQL.
 
 # Production Deployment Considerations
 When deploying to production, consider the following:
