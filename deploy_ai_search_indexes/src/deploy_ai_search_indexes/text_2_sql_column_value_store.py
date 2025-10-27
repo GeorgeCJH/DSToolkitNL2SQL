@@ -93,6 +93,7 @@ class Text2SqlColumnValueStoreAISearch(AISearch):
             SearchableField(
                 name="Value",
                 type=SearchFieldDataType.String,
+                analyzer_name="ko.microsoft",
                 hidden=False,
             ),
             SimpleField(

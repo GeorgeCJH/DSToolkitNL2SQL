@@ -16,7 +16,7 @@ dependencies = [
     "azure-storage-blob>=12.24.0",
     "python-dotenv>=1.0.1",
     # Reference to local nl2sql library
-    "nl2sql @ file:///C:/MyDocs/AppProjects/NL2SQL/dist/nl2sql-0.20.1-py3-none-any.whl",
+    "nl2sql @ file:///C:/MyDocs/AppProjects/DSToolskitNL2SQL/NL2SQL/dist/nl2sql-0.20.1-py3-none-any.whl",
 ]
 
 [dependency-groups]

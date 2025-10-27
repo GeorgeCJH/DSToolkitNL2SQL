@@ -53,9 +53,9 @@ The step will create the following indexes:
 - Query Cache Index - for caching previously executed queries
 
 Reference following commend to create:
-uv run --env-file .env src/deploy_ai_search_indexes/deploy.py --index_type text_2_sql_schema_store [add --rebuild REBUILD if already run this command] 
-uv run --env-file .env src/deploy_ai_search_indexes/deploy.py --index_type text_2_sql_column_value_store [add --rebuild REBUILD if already run this command] 
-uv run --env-file .env src/deploy_ai_search_indexes/deploy.py --index_type text_2_sql_query_cache [add --rebuild REBUILD if already run this command] 
+uv run --env-file .env src/deploy_ai_search_indexes/deploy.py --index_type nl2sql_schema_store [add --rebuild REBUILD if already run this command] 
+uv run --env-file .env src/deploy_ai_search_indexes/deploy.py --index_type nl2sql_column_value_store [add --rebuild REBUILD if already run this command] 
+uv run --env-file .env src/deploy_ai_search_indexes/deploy.py --index_type nl2sql_query_cache [add --rebuild REBUILD if already run this command] 
 
 ## Data Dictionary Preparation
 The Data Dictionary is crucial for the NL2SQL system to understand your database schema.
