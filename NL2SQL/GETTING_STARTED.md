@@ -1,10 +1,10 @@
-# Getting Started with Agentic Text2SQL Systems
+# Getting Started with Agentic NL2SQL Systems
 
 The guide will use PostgreSQL as data source reference to deploy the NL2SQL solutions.
 
 # Deployment Overview 
 The guide covers the steps prerequisite Azure resources, environment configurations, code installation, and deployment steps for the systems.
-![Follow the four sections of the deployment process.](../../images/NL2SQL_Overall_Deploy_Steps.png "Deployment process")
+![Follow the four sections of the deployment process.](../docs/images/NL2SQL_Overall_Deploy_Steps.png "Deployment process")
 
 ## Section I:
 ## Prerequisites of Azure Resources readiness
@@ -46,6 +46,7 @@ The system requires several AI Search indexes for its operation. Follow these st
 ### Create a .env file from the example
 >cp .env.example .env
 ### Edit the .env file with your Azure resource information
+>remove not used environment settings if not used, e.g., other extra database connnection infomation.
 
 ### Install dependencies
 >uv sync --extra postgres
