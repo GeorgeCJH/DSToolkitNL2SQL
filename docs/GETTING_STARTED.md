@@ -59,19 +59,28 @@ This step will create the following indexes:
 - Query Cache Index - for caching previously executed queries
 
 Reference following commend to create:
->uv run --env-file .env src/deploy_ai_search_indexes/deploy.py --index_type text_2_sql_schema_store [add --rebuild REBUILD if already run this command] 
->uv run --env-file .env src/deploy_ai_search_indexes/deploy.py --index_type text_2_sql_column_value_store [add --rebuild REBUILD if already run this command] 
->uv run --env-file .env src/deploy_ai_search_indexes/deploy.py --index_type text_2_sql_query_cache [add --rebuild REBUILD if already run this command] 
+>uv run --env-file .env src/deploy_ai_search_indexes/deploy.py --index_type text_2_sql_schema_store [add --rebuild REBUILD if already run this command]
+
+>uv run --env-file .env src/deploy_ai_search_indexes/deploy.py --index_type text_2_sql_column_value_store [add --rebuild REBUILD if already run this command]
+
+**Please note that Korean Language support is added for column value search index, but due to AI Search SDK limitation, it is only works when the index is alread built :**
+- Because analyzers are used to tokenize terms, you should assign an analyzer when the field is created. In fact, assigning an analyzer or indexAnalyzer to a field that has already been physically created isn't allowed (although you can change the searchAnalyzer property at any time with no impact to the index).
+- So when it is first time run, please comment out the "analyer_name" in the field name of "value" in this python script `text_2_sql_column_value_store.py` .
+
+>uv run --env-file .env src/deploy_ai_search_indexes/deploy.py --index_type text_2_sql_query_cache [add --rebuild REBUILD if already run this command]
 
 ## Section III:
 ## Data Dictionary Preparation
+
 The Data Dictionary is crucial for the NL2SQL system to understand your database schema.
 
 ### Step 1: Generate the data dictionary files.
+
 Set up your database connection in the .env file:
 >cd text2sql_core
 >cp .env.example .env
 ### Edit the .env file as well as with your database connection details
+
 Generate the data dictionary for your database:
 ### For PostgreSQL
 >uv run --env-file .env nl2sql_core/src/text_2_sql_core/data_dictionary/postgres_data_dictionary_creator.py
