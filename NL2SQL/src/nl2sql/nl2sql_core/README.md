@@ -25,7 +25,7 @@ A common way to perform NL2SQL generation _(Iteration 1)_ is to provide the comp
 - More schema information can cause confusion with the LLM. In our original use case, when exceeding 5 complex tables / views, we found that the LLM could get confused between which columns belonged to which entity and as such, would generate invalid SQL queries.
 - Entity relationships between different tables is challenging for the LLM to understand.
 
-To solve these issues, a Multi-Shot approach is developed. This approach has evolved as the system has matured into an multi-agent approach that brings improved reasoning, speed and instruction following capabilities. With separation into agents, different agents can focus on one task only, and provide a better overall flow and response quality.
+To solve these issues, a Multi-Shot  _(Iteration 5)_ approach is developed. This approach has evolved as the system has matured into an multi-agent approach that brings improved reasoning, speed and instruction following capabilities. With separation into agents, different agents can focus on one task only, and provide a better overall flow and response quality.
 
 Using Auto-Function calling capabilities, the LLM is able to retrieve from the plugin the full schema information for the views / tables that it considers useful for answering the question. Once retrieved, the full SQL query can then be generated. The schemas for multiple views / tables can be retrieved to allow the LLM to perform joins and other complex queries.
 
@@ -35,7 +35,7 @@ For the query cache enabled approach, AI Search is used as a vector based cache,
 
 ### Full Logical Flow for Agentic Vector Based Approach
 
-The following diagram shows the logical flow within mutlti agent system. In an ideal scenario, the questions will follow the _Pre-Fetched Cache Results Path** which leads to the quickest answer generation. In cases where the question is not known, the group chat selector  will fall back to the other agents accordingly and generate the SQL query using the LLMs. The cache is then updated with the newly generated query and schemas.
+In an ideal scenario, the questions will follow the _Pre-Fetched Cache Results Path** which leads to the quickest answer generation. In cases where the question is not known, the group chat selector  will fall back to the other agents accordingly and generate the SQL query using the LLMs. The cache is then updated with the newly generated query and schemas.
 
 In this release, **gpt4o-mini** can be used as each agent's prompt is small and focuses on a single simple task.
 
