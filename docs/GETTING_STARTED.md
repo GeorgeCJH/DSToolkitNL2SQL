@@ -62,9 +62,11 @@ This step will create the following indexes:
 - Query Cache Index - for caching previously executed queries
 
 Reference following commend to create:
->uv run --env-file .env src/deploy_ai_search_indexes/deploy.py --index_type text_2_sql_schema_store [add --rebuild REBUILD if already run this command]
+>uv run --env-file .env src/deploy_ai_search_indexes/deploy.py --index_type nl2sql_schema_store [add --rebuild REBUILD if already run this command]
 
->uv run --env-file .env src/deploy_ai_search_indexes/deploy.py --index_type text_2_sql_column_value_store [add --rebuild REBUILD if already run this command]
+>uv run --env-file .env src/deploy_ai_search_indexes/deploy.py --index_type nl2sql_column_value_store [add --rebuild REBUILD if already run this command]
+
+>uv run --env-file .env src/deploy_ai_search_indexes/deploy.py --index_type nl2sql_query_cache [add --rebuild REBUILD if already run this command]
 
 > [!NOTE]
 > **Please note that Korean Language support is added for column value search index, but due to AI Search SDK limitation, it is only works when the index is alread built :**
