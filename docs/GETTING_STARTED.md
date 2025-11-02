@@ -87,7 +87,7 @@ Set up your database connection in the .env file:
 
 Generate the data dictionary for your database:
 ### For PostgreSQL
->uv run --env-file .env nl2sql_core/src/text_2_sql_core/data_dictionary/postgres_data_dictionary_creator.py
+>uv run --env-file .env nl2sql_core/data_dictionary/postgres_data_dictionary_creator.py
 
 If the above command run success, there will have following three folder with json files for each tables will been created under `nl2sql`, which are:
 - schema_store
