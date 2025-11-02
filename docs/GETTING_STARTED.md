@@ -66,14 +66,12 @@ Reference following commend to create:
 
 >uv run --env-file .env src/deploy_ai_search_indexes/deploy.py --index_type nl2sql_column_value_store [add --rebuild REBUILD if already run this command]
 
->uv run --env-file .env src/deploy_ai_search_indexes/deploy.py --index_type nl2sql_query_cache [add --rebuild REBUILD if already run this command]
-
 > [!NOTE]
 > **Please note that Korean Language support is added for column value search index, but due to AI Search SDK limitation, it is only works when the index is alread built :**
 > - Because analyzers are used to tokenize terms, you should assign an analyzer when the field is created. In fact, assigning an analyzer or indexAnalyzer to a field that has already been physically created isn't allowed (although you can change the searchAnalyzer property at any time with no impact to the index).
 > - So when it is first time run, please comment out the "analyer_name" in the field name of "value" in this python script `text_2_sql_column_value_store.py` .
 
->uv run --env-file .env src/deploy_ai_search_indexes/deploy.py --index_type text_2_sql_query_cache [add --rebuild REBUILD if already run this command]
+>uv run --env-file .env src/deploy_ai_search_indexes/deploy.py --index_type nl2sql_query_cache [add --rebuild REBUILD if already run this command]
 
 ## Section III:
 ## Data Dictionary Preparation
